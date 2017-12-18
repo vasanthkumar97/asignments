@@ -11,14 +11,17 @@ public class JavaAss3 {
 		Boolean isPinged=false;
 		try
 		{
-		String[] command = { "cmd.exe", "/C", "ping "+server_name };
-		Process child = Runtime.getRuntime().exec(command);
+		InetAddress inet = InetAddress.getByName(server_name);
+		inet.isReachable(5000);
+
 		currentTime = System.currentTimeMillis() - currentTime;
 	    System.out.println("pinged successfully in "+ currentTime+ "millisecond");
 		}
 		catch(Exception e)
 		{
-		    System.out.println("PIng failed.");
+			System.out.println(e);
+
+			System.out.println("Ping failed.");
 		}
 		
 		sc.close();
